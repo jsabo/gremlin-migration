@@ -19,7 +19,7 @@ This tool replicates health checks, external-integrations, and scenarios between
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/gremlin-migration.git
+   git clone git@github.com:jsabo/gremlin-migration.git
    cd gremlin-migration
    ```
 
