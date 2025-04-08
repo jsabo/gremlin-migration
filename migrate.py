@@ -231,9 +231,13 @@ def copy_scenarios(source_team_id, target_team_id, source_headers, dest_headers,
     if not scenarios:
         print("No scenarios found in source team.")
         return
+
     for scenario in scenarios:
         new_scenario = scenario.copy()
-        for field in ["teamId", "identifier", "createdBy", "createdAt", "updatedBy", "updatedAt"]:
+        # Remove system fields and shared linkage fields so the scenario is treated as a standalone, customized scenario.
+        for field in ["teamId", "identifier", "createdBy", "createdAt", "updatedBy", "updatedAt",
+                      "sharedScenario", "sharedScenarioGuid", "baseScenarioId",
+                      "created_from_type", "created_from_id", "org_id"]:
             new_scenario.pop(field, None)
         new_scenario = recursive_update_status_check(new_scenario, hc_mapping)
         new_scenario["teamId"] = target_team_id
